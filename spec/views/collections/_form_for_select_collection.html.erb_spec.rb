@@ -25,6 +25,12 @@ describe 'collections/_form_for_select_collection.html.erb', type: :view do
     expect(collection_ids).to eql(["id_1237", "id_1234", "id_1235", "id_1236"])
   end
 
+  it "displays the first title of collection without brackets" do
+    render
+    collection_name = doc.xpath("//li/label[@for='id_#{collections[0].id}']").text
+    expect(collection_name).to eql(collections[0].title.first)
+  end
+
   it "selects the right collection when instructed to do so" do
     assign(:add_files_to_collection, collections[2].id)
     render

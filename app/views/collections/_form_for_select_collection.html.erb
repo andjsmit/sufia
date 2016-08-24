@@ -17,7 +17,7 @@
                   <li>
                     <% selected = (collection.id == @add_files_to_collection) || (@add_files_to_collection.blank? && index == 0) %>
                     <%= radio_button_tag(:id, collection.id, selected, class: "collection-selector") %>
-                    <%= label_tag(:collection, collection.title, for: "id_#{collection.id}") %>
+                    <%= label_tag(:collection, collection.title.first, for: "id_#{collection.id}") %>
                   </li>
                 <% end %>
               </ul>
@@ -29,7 +29,7 @@
           <button type="button" class="btn btn-default" data-dismiss="modal"><%= t("sufia.collection.select_form.close")%></button>
           <% if user_collections.blank? %>
             <%= render '/collections/button_create_collection', label: t("sufia.collection.select_form.create") %>
-            
+
           <% else %>
             <%= render '/collections/button_for_update_collection', label: t("sufia.collection.select_form.update"), collection_id: 'collection_replace_id' %>
             <%= render '/collections/button_create_collection', label: t("sufia.collection.select_form.create_new") %>
