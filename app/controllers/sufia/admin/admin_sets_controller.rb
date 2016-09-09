@@ -44,6 +44,7 @@ module Sufia
       add_breadcrumb t(:'sufia.toolbar.admin.menu'), sufia.admin_path
       add_breadcrumb t(:'sufia.admin.sidebar.admin_sets'), sufia.admin_admin_sets_path
       @admin_sets = CurationConcerns::AdminSetService.new(self).search_results(:read)
+      @presenter = presenter_class.new(self, current_ability)
     end
 
     def new
