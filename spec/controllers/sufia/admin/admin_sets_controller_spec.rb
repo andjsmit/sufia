@@ -33,6 +33,11 @@ describe Sufia::Admin::AdminSetsController do
         expect(response).to be_success
         expect(assigns[:admin_sets]).to be_kind_of Array
       end
+
+      it 'defines a presenter' do
+        get :index
+        expect(assigns[:presenter]).to be_kind_of Sufia::AdminSetPresenter
+      end
     end
 
     describe "#new" do
